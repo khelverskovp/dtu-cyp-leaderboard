@@ -1,5 +1,14 @@
 {
-  "updated": null,
-  "regression": [],
+  "updated": "2026-10-16T13:34:22+00:00",
+  "regression": [
+    {
+      "team": "Test1",
+      "model": "5-epoch test",
+      "score": 0.8573510783166424,
+      "submitted": "2026-10-16T13:34:22+00:00",
+      "issue": 2,
+      "submissions": 1
+    }
+  ],
   "classification": []
 }

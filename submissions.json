@@ -1,0 +1,26 @@
+[
+  {
+    "issue": 2,
+    "user": "khelverskovp",
+    "team": "Test1",
+    "task": "regression",
+    "model": "5-epoch test",
+    "time": "2026-10-16T13:34:22+00:00",
+    "day": "2026-10-16",
+    "scores": {
+      "macro_ST-RAE": 0.8573510783166424,
+      "per_target": {
+        "CYP1A2_pIC50_direct_inhibition": 0.8907222054514992,
+        "CYP2C9_pIC50_direct_inhibition": 0.9061551160926524,
+        "CYP2D6_pIC50_direct_inhibition": 0.9262342971588128,
+        "CYP3A4_pIC50_direct_inhibition": 0.7062926945636053
+      },
+      "secondary": {
+        "CYP1A2_pIC50_direct_inhibition": 0.6619946803013099,
+        "CYP2C9_pIC50_direct_inhibition": 0.5442225208743718,
+        "CYP2D6_pIC50_direct_inhibition": 0.6103910144144145,
+        "CYP3A4_pIC50_direct_inhibition": 0.726786357
+      }
+    }
+  }
+]
