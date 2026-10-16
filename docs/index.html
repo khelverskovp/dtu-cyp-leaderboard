@@ -44,6 +44,12 @@
   tr.first td.rank { color: var(--gold); }
   .team { font-weight: 600; }
   .empty { padding: 24px; text-align: center; color: var(--muted); }
+  .note {
+    margin: 18px 0 0; padding: 12px 16px; border-radius: 10px; max-width: 70ch;
+    background: var(--accent-soft); border-left: 4px solid var(--accent);
+  }
+  .rules { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 8px 20px; }
+  .rules li { margin: 10px 0; }
   footer { color: var(--muted); font-size: 13px; }
   a { color: var(--accent); }
 </style>
@@ -54,10 +60,11 @@
     <h1>CYP Inhibition Leaderboard</h1>
     <p>DTU Deep Learning project: predicting CYP inhibition with molecular foundation models.
       Scores are on the held-out test split made by the starter repository. Each team's best submission is shown.</p>
+    <p class="note">Your score on the leaderboard does not affect your grade. It's meant as a fun way to track your own progress as you complete the project and compare to other groups, so please follow the rules and have fun with it :)</p>
   </header>
   <div class="actions">
     <a class="button primary" href="https://github.com/khelverskovp/dtu-cyp-leaderboard/issues/new?template=submission.yml">Submit predictions</a>
-    <a class="button" href="https://github.com/khelverskovp/dtu-cyp-leaderboard#rules">Rules</a>
+    <a class="button" href="#rules">Rules</a>
     <a class="button" href="https://github.com/khelverskovp/dtu-cyp-project">Starter code</a>
   </div>
 
@@ -71,6 +78,17 @@
     <h2>Classification</h2>
     <p class="metric">Time-dependent inhibition (TDI) of CYP2D6 and CYP3A4. Ranked by MCC, averaged over the two enzymes (higher is better).</p>
     <div class="table-wrap"><table id="classification"></table></div>
+  </section>
+
+  <section id="rules">
+    <h2>Rules</h2>
+    <p class="metric">Submit with the button above: pick the task, attach the <code>test_predictions.csv</code> from <code>finetune.py</code>, and a bot posts your score within a few minutes.</p>
+    <ul class="rules">
+      <li><strong>Tune on validation, not test.</strong> Choose models, hyperparameters and epochs using the validation split only. Only submit test predictions for a model you have already chosen.</li>
+      <li><strong>One submission per team per task per day</strong> (Copenhagen time). Rejected submissions do not count.</li>
+      <li><strong>Use the starter repo's splits</strong> (<code>prepare_data.py</code>, default seed). Do not train on the test molecules or look at their labels. The labels are public, so the leaderboard relies on your honesty.</li>
+      <li><strong>Use one team name</strong> for all your team's submissions.</li>
+    </ul>
   </section>
 
   <footer id="updated"></footer>

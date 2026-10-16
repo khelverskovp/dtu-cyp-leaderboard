@@ -6,6 +6,8 @@ Leaderboard for the DTU Deep Learning project **Predicting CYP Inhibition with M
 
 There are two leaderboards, each with one score. Each shows the best submission per team.
 
+> Your score on the leaderboard does not affect your grade. It's meant as a fun way to track your own progress as you complete the project and compare to other groups, so please follow the rules and have fun with it :)
+
 | Task | Endpoints | Ranked by |
 |---|---|---|
 | Regression | pIC50 for CYP1A2, CYP2C9, CYP2D6, CYP3A4 | MA-ST-RAE: soft-threshold relative absolute error, averaged over the 4 enzymes (lower is better) |
