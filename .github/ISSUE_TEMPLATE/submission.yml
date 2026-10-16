@@ -1,0 +1,36 @@
+name: Leaderboard submission
+description: Submit test-set predictions for one task.
+title: "Submission"
+labels: [submission]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Attach the `test_predictions.csv` that `finetune.py` wrote for your **final** model, chosen on the validation set.
+        One accepted submission per team per task per day (Copenhagen time). The score is posted as a comment within a few minutes.
+  - type: input
+    attributes:
+      label: Team name
+      description: Use the same name for every submission from your team (1-40 characters).
+    validations:
+      required: true
+  - type: dropdown
+    attributes:
+      label: Task
+      options:
+        - regression
+        - classification
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Model description
+      description: Shown on the leaderboard, e.g. "Atom-JEPA + MLP readout, 30 epochs".
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Predictions file
+      description: Drag and drop your `test_predictions.csv` here.
+    validations:
+      required: true

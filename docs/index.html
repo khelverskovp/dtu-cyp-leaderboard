@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CYP Leaderboard</title>
+<style>
+  :root {
+    --bg: #f7f7f5; --surface: #ffffff; --text: #1d1d1b; --muted: #6b6b66;
+    --border: #e3e2de; --accent: #990000; --accent-soft: #f5e6e6; --gold: #b7892b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #161615; --surface: #1f1f1e; --text: #ececea; --muted: #a09f99;
+      --border: #33332f; --accent: #e06c6c; --accent-soft: #3a2424; --gold: #d8ad55;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 1040px; margin: 0 auto; padding: 40px 16px 64px; }
+  header h1 { margin: 0 0 6px; font-size: 28px; letter-spacing: -0.01em; }
+  header p { margin: 0; color: var(--muted); max-width: 70ch; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0 32px; }
+  .button {
+    display: inline-block; padding: 8px 14px; border-radius: 8px; text-decoration: none;
+    border: 1px solid var(--border); color: var(--text); background: var(--surface); font-weight: 500;
+  }
+  .button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  section { margin-bottom: 40px; }
+  h2 { font-size: 20px; margin: 0 0 4px; }
+  .metric { color: var(--muted); margin: 0 0 12px; font-size: 14px; }
+  .table-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; }
+  table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+  th, td { padding: 10px 12px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--border); }
+  th { font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); font-weight: 600; }
+  th.left, td.left { text-align: left; }
+  td.model { white-space: normal; min-width: 200px; color: var(--muted); font-size: 14px; }
+  tr:last-child td { border-bottom: none; }
+  td.main { font-weight: 700; background: var(--accent-soft); }
+  td.rank { font-weight: 700; width: 40px; }
+  tr.first td.rank { color: var(--gold); }
+  .team { font-weight: 600; }
+  .empty { padding: 24px; text-align: center; color: var(--muted); }
+  footer { color: var(--muted); font-size: 13px; }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>CYP Inhibition Leaderboard</h1>
+    <p>DTU Deep Learning project: predicting CYP inhibition with molecular foundation models.
+      Scores are on the held-out test split made by the starter repository. Each team's best submission is shown.</p>
+  </header>
+  <div class="actions">
+    <a class="button primary" href="https://github.com/khelverskovp/dtu-cyp-leaderboard/issues/new?template=submission.yml">Submit predictions</a>
+    <a class="button" href="https://github.com/khelverskovp/dtu-cyp-leaderboard#rules">Rules</a>
+    <a class="button" href="https://github.com/khelverskovp/dtu-cyp-project">Starter code</a>
+  </div>
+
+  <section>
+    <h2>Regression</h2>
+    <p class="metric">pIC50 for four CYP enzymes. Ranked by macro ST-RAE (lower is better).</p>
+    <div class="table-wrap"><table id="regression"></table></div>
+  </section>
+
+  <section>
+    <h2>Classification</h2>
+    <p class="metric">Time-dependent inhibition of CYP2D6 and CYP3A4. Ranked by macro MCC (higher is better).</p>
+    <div class="table-wrap"><table id="classification"></table></div>
+  </section>
+
+  <footer id="updated"></footer>
+</main>
+<script>
+  const COLUMNS = {
+    regression: {
+      main: 'Macro ST-RAE', metric: 'ST-RAE', secondary: 'MAE',
+      targets: ['CYP1A2_pIC50_direct_inhibition', 'CYP2C9_pIC50_direct_inhibition',
+                'CYP2D6_pIC50_direct_inhibition', 'CYP3A4_pIC50_direct_inhibition'],
+    },
+    classification: {
+      main: 'Macro MCC', metric: 'MCC', secondary: 'AUROC',
+      targets: ['CYP2D6_is_TDI', 'CYP3A4_is_TDI'],
+    },
+  };
+  const short = t => t.split('_')[0].replace('CYP', '');
+  const fmt = v => (v === null || v === undefined) ? '–' : v.toFixed(3);
+
+  function cell(row, text, cls) {
+    const td = document.createElement('td');
+    td.textContent = text;
+    if (cls) td.className = cls;
+    row.appendChild(td);
+    return td;
+  }
+
+  function render(task, entries) {
+    const table = document.getElementById(task);
+    const c = COLUMNS[task];
+    table.replaceChildren();
+    const head = table.createTHead().insertRow();
+    const headers = ['#', 'Team', 'Model', c.main,
+      ...c.targets.map(t => `${c.metric} ${short(t)}`),
+      ...c.targets.map(t => `${c.secondary} ${short(t)}`), 'Subs', 'Date'];
+    headers.forEach((h, i) => {
+      const th = document.createElement('th');
+      th.textContent = h;
+      if (i === 1 || i === 2) th.className = 'left';
+      head.appendChild(th);
+    });
+    const body = table.createTBody();
+    if (!entries.length) {
+      const td = body.insertRow().insertCell();
+      td.colSpan = headers.length;
+      td.className = 'empty';
+      td.textContent = 'No submissions yet.';
+      return;
+    }
+    entries.forEach((e, i) => {
+      const row = body.insertRow();
+      if (i === 0) row.className = 'first';
+      cell(row, i + 1, 'rank');
+      cell(row, e.team, 'left team');
+      cell(row, e.model, 'left model');
+      cell(row, fmt(e.score), 'main');
+      c.targets.forEach(t => cell(row, fmt(e.per_target[t])));
+      c.targets.forEach(t => cell(row, fmt(e.secondary[t])));
+      cell(row, e.submissions);
+      cell(row, e.submitted.slice(0, 10));
+    });
+  }
+
+  fetch('leaderboard.json', { cache: 'no-store' })
+    .then(r => r.json())
+    .then(board => {
+      render('regression', board.regression || []);
+      render('classification', board.classification || []);
+      if (board.updated) {
+        document.getElementById('updated').textContent =
+          'Last updated ' + new Date(board.updated).toLocaleString('en-GB', { timeZone: 'Europe/Copenhagen' }) + ' (Copenhagen time).';
+      }
+    })
+    .catch(() => {
+      render('regression', []);
+      render('classification', []);
+    });
+</script>
+</body>
+</html>

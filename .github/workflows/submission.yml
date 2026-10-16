@@ -1,0 +1,67 @@
+name: Score submission
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+  pages: write
+  id-token: write
+
+# Process one submission at a time so leaderboard updates never conflict.
+concurrency:
+  group: leaderboard
+  cancel-in-progress: false
+
+jobs:
+  score:
+    if: contains(github.event.issue.labels.*.name, 'submission')
+    runs-on: ubuntu-latest
+    outputs:
+      accepted: ${{ steps.score.outputs.accepted }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pandas==2.2.3 scikit-learn==1.5.2
+      - name: Score
+        id: score
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_USER: ${{ github.event.issue.user.login }}
+          ISSUE_CREATED: ${{ github.event.issue.created_at }}
+          REPO_OWNER: ${{ github.repository_owner }}
+        run: python scoring/process_submission.py "$RUNNER_TEMP/reply.md"
+      - name: Commit leaderboard
+        if: steps.score.outputs.accepted == 'true'
+        env:
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add submissions.json docs/leaderboard.json
+          git commit -m "Score submission #$ISSUE_NUMBER"
+          git pull --rebase
+          git push
+      - name: Reply
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ACCEPTED: ${{ steps.score.outputs.accepted }}
+        run: |
+          reply="$RUNNER_TEMP/reply.md"
+          [ -s "$reply" ] || echo "**Error:** the submission could not be processed. Please contact the course staff." > "$reply"
+          if [ "$ACCEPTED" = "true" ]; then label=accepted; else label=rejected; fi
+          gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file "$reply"
+          gh issue edit "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --add-label "$label"
+          gh issue close "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY"
+
+  deploy:
+    needs: score
+    if: needs.score.outputs.accepted == 'true'
+    uses: ./.github/workflows/pages.yml
