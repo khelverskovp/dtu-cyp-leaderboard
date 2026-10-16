@@ -1,45 +1,177 @@
 [
   {
-    "issue": 2,
+    "issue": null,
     "user": "khelverskovp",
-    "team": "Test1",
+    "team": "Baseline - Atom-JEPA",
     "task": "regression",
-    "model": "5-epoch test",
-    "time": "2026-10-16T13:34:22+00:00",
+    "model": "Atom-JEPA fine-tuned + MLP readout, starter defaults (20 epochs)",
+    "time": "2026-10-16T15:29:01+00:00",
     "day": "2026-10-16",
     "scores": {
-      "macro_ST-RAE": 0.8573510783166424,
+      "macro_ST-RAE": 0.7702638100588355,
       "per_target": {
-        "CYP1A2_pIC50_direct_inhibition": 0.8907222054514992,
-        "CYP2C9_pIC50_direct_inhibition": 0.9061551160926524,
-        "CYP2D6_pIC50_direct_inhibition": 0.9262342971588128,
-        "CYP3A4_pIC50_direct_inhibition": 0.7062926945636053
+        "CYP1A2_pIC50_direct_inhibition": 0.856999713074042,
+        "CYP2C9_pIC50_direct_inhibition": 0.7306065377076797,
+        "CYP2D6_pIC50_direct_inhibition": 0.9832016592226142,
+        "CYP3A4_pIC50_direct_inhibition": 0.5102473302310064
       },
       "secondary": {
-        "CYP1A2_pIC50_direct_inhibition": 0.6619946803013099,
-        "CYP2C9_pIC50_direct_inhibition": 0.5442225208743718,
-        "CYP2D6_pIC50_direct_inhibition": 0.6103910144144145,
-        "CYP3A4_pIC50_direct_inhibition": 0.726786357
+        "CYP1A2_pIC50_direct_inhibition": 0.6291370430960699,
+        "CYP2C9_pIC50_direct_inhibition": 0.45245468933668337,
+        "CYP2D6_pIC50_direct_inhibition": 0.6357419501531532,
+        "CYP3A4_pIC50_direct_inhibition": 0.5522300777593584
       }
     }
   },
   {
-    "issue": 3,
+    "issue": null,
     "user": "khelverskovp",
-    "team": "test1",
-    "task": "classification",
-    "model": "5 epoch test",
-    "time": "2026-10-16T13:34:55+00:00",
+    "team": "Baseline - Morgan MLP",
+    "task": "regression",
+    "model": "Morgan count fingerprint + MLP, starter defaults (100 epochs)",
+    "time": "2026-10-16T15:29:01+00:00",
     "day": "2026-10-16",
     "scores": {
-      "macro_MCC": 0.12393907500481141,
+      "macro_ST-RAE": 0.8641988099339353,
       "per_target": {
-        "CYP2D6_is_TDI": 0.08826899397373984,
-        "CYP3A4_is_TDI": 0.15960915603588297
+        "CYP1A2_pIC50_direct_inhibition": 0.9005675994454028,
+        "CYP2C9_pIC50_direct_inhibition": 0.9166012017160745,
+        "CYP2D6_pIC50_direct_inhibition": 0.9246807037994814,
+        "CYP3A4_pIC50_direct_inhibition": 0.7149457347747827
       },
       "secondary": {
-        "CYP2D6_is_TDI": 0.5669324827219564,
-        "CYP3A4_is_TDI": 0.7206134252262056
+        "CYP1A2_pIC50_direct_inhibition": 0.665576613812227,
+        "CYP2C9_pIC50_direct_inhibition": 0.5433313772562813,
+        "CYP2D6_pIC50_direct_inhibition": 0.6131541807477476,
+        "CYP3A4_pIC50_direct_inhibition": 0.7283466801604278
+      }
+    }
+  },
+  {
+    "issue": null,
+    "user": "khelverskovp",
+    "team": "Baseline - RDKit MLP",
+    "task": "regression",
+    "model": "200 RDKit descriptors + MLP, starter defaults (100 epochs)",
+    "time": "2026-10-16T15:29:01+00:00",
+    "day": "2026-10-16",
+    "scores": {
+      "macro_ST-RAE": 0.7925716598342278,
+      "per_target": {
+        "CYP1A2_pIC50_direct_inhibition": 0.8387685614976382,
+        "CYP2C9_pIC50_direct_inhibition": 0.8072878672631617,
+        "CYP2D6_pIC50_direct_inhibition": 0.955370096052899,
+        "CYP3A4_pIC50_direct_inhibition": 0.568860114523212
+      },
+      "secondary": {
+        "CYP1A2_pIC50_direct_inhibition": 0.632962911,
+        "CYP2C9_pIC50_direct_inhibition": 0.48839192151758787,
+        "CYP2D6_pIC50_direct_inhibition": 0.6171871415135134,
+        "CYP3A4_pIC50_direct_inhibition": 0.6090695917165776
+      }
+    }
+  },
+  {
+    "issue": null,
+    "user": "khelverskovp",
+    "team": "Baseline - Morgan RDKit MLP",
+    "task": "regression",
+    "model": "Morgan + RDKit features + MLP, starter defaults (100 epochs)",
+    "time": "2026-10-16T15:29:01+00:00",
+    "day": "2026-10-16",
+    "scores": {
+      "macro_ST-RAE": 0.7570651999061931,
+      "per_target": {
+        "CYP1A2_pIC50_direct_inhibition": 0.7896056933660396,
+        "CYP2C9_pIC50_direct_inhibition": 0.7635908847330518,
+        "CYP2D6_pIC50_direct_inhibition": 0.9433289780562782,
+        "CYP3A4_pIC50_direct_inhibition": 0.5317352434694027
+      },
+      "secondary": {
+        "CYP1A2_pIC50_direct_inhibition": 0.605774411515284,
+        "CYP2C9_pIC50_direct_inhibition": 0.47282381184924627,
+        "CYP2D6_pIC50_direct_inhibition": 0.6161848191351351,
+        "CYP3A4_pIC50_direct_inhibition": 0.5797761803368984
+      }
+    }
+  },
+  {
+    "issue": null,
+    "user": "khelverskovp",
+    "team": "Baseline - Atom-JEPA",
+    "task": "classification",
+    "model": "Atom-JEPA fine-tuned + MLP readout, starter defaults (20 epochs)",
+    "time": "2026-10-16T15:29:01+00:00",
+    "day": "2026-10-16",
+    "scores": {
+      "macro_MCC": 0.2332267395690333,
+      "per_target": {
+        "CYP2D6_is_TDI": 0.11506123077638812,
+        "CYP3A4_is_TDI": 0.3513922483616785
+      },
+      "secondary": {
+        "CYP2D6_is_TDI": 0.5829877724614567,
+        "CYP3A4_is_TDI": 0.760030630957419
+      }
+    }
+  },
+  {
+    "issue": null,
+    "user": "khelverskovp",
+    "team": "Baseline - Morgan MLP",
+    "task": "classification",
+    "model": "Morgan count fingerprint + MLP, starter defaults (100 epochs)",
+    "time": "2026-10-16T15:29:01+00:00",
+    "day": "2026-10-16",
+    "scores": {
+      "macro_MCC": 0.08564148635802318,
+      "per_target": {
+        "CYP2D6_is_TDI": 0.002131634160213004,
+        "CYP3A4_is_TDI": 0.16915133855583336
+      },
+      "secondary": {
+        "CYP2D6_is_TDI": 0.5560871876661351,
+        "CYP3A4_is_TDI": 0.6638252423271467
+      }
+    }
+  },
+  {
+    "issue": null,
+    "user": "khelverskovp",
+    "team": "Baseline - RDKit MLP",
+    "task": "classification",
+    "model": "200 RDKit descriptors + MLP, starter defaults (100 epochs)",
+    "time": "2026-10-16T15:29:01+00:00",
+    "day": "2026-10-16",
+    "scores": {
+      "macro_MCC": 0.1918192228556294,
+      "per_target": {
+        "CYP2D6_is_TDI": 0.006659071071104999,
+        "CYP3A4_is_TDI": 0.37697937464015385
+      },
+      "secondary": {
+        "CYP2D6_is_TDI": 0.507177033492823,
+        "CYP3A4_is_TDI": 0.7779658626040344
+      }
+    }
+  },
+  {
+    "issue": null,
+    "user": "khelverskovp",
+    "team": "Baseline - Morgan RDKit MLP",
+    "task": "classification",
+    "model": "Morgan + RDKit features + MLP, starter defaults (100 epochs)",
+    "time": "2026-10-16T15:29:01+00:00",
+    "day": "2026-10-16",
+    "scores": {
+      "macro_MCC": 0.16711376605793374,
+      "per_target": {
+        "CYP2D6_is_TDI": 0.09343247305536695,
+        "CYP3A4_is_TDI": 0.24079505906050053
+      },
+      "secondary": {
+        "CYP2D6_is_TDI": 0.5348219032429559,
+        "CYP3A4_is_TDI": 0.7185075469036535
       }
     }
   }

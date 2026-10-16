@@ -1,22 +1,70 @@
 {
-  "updated": "2026-10-16T13:34:55+00:00",
+  "updated": "2026-10-16T15:29:01+00:00",
   "regression": [
     {
-      "team": "Test1",
-      "model": "5-epoch test",
-      "score": 0.8573510783166424,
-      "submitted": "2026-10-16T13:34:22+00:00",
-      "issue": 2,
+      "team": "Baseline - Morgan RDKit MLP",
+      "model": "Morgan + RDKit features + MLP, starter defaults (100 epochs)",
+      "score": 0.7570651999061931,
+      "submitted": "2026-10-16T15:29:01+00:00",
+      "issue": null,
+      "submissions": 1
+    },
+    {
+      "team": "Baseline - Atom-JEPA",
+      "model": "Atom-JEPA fine-tuned + MLP readout, starter defaults (20 epochs)",
+      "score": 0.7702638100588355,
+      "submitted": "2026-10-16T15:29:01+00:00",
+      "issue": null,
+      "submissions": 1
+    },
+    {
+      "team": "Baseline - RDKit MLP",
+      "model": "200 RDKit descriptors + MLP, starter defaults (100 epochs)",
+      "score": 0.7925716598342278,
+      "submitted": "2026-10-16T15:29:01+00:00",
+      "issue": null,
+      "submissions": 1
+    },
+    {
+      "team": "Baseline - Morgan MLP",
+      "model": "Morgan count fingerprint + MLP, starter defaults (100 epochs)",
+      "score": 0.8641988099339353,
+      "submitted": "2026-10-16T15:29:01+00:00",
+      "issue": null,
       "submissions": 1
     }
   ],
   "classification": [
     {
-      "team": "test1",
-      "model": "5 epoch test",
-      "score": 0.12393907500481141,
-      "submitted": "2026-10-16T13:34:55+00:00",
-      "issue": 3,
+      "team": "Baseline - Atom-JEPA",
+      "model": "Atom-JEPA fine-tuned + MLP readout, starter defaults (20 epochs)",
+      "score": 0.2332267395690333,
+      "submitted": "2026-10-16T15:29:01+00:00",
+      "issue": null,
+      "submissions": 1
+    },
+    {
+      "team": "Baseline - RDKit MLP",
+      "model": "200 RDKit descriptors + MLP, starter defaults (100 epochs)",
+      "score": 0.1918192228556294,
+      "submitted": "2026-10-16T15:29:01+00:00",
+      "issue": null,
+      "submissions": 1
+    },
+    {
+      "team": "Baseline - Morgan RDKit MLP",
+      "model": "Morgan + RDKit features + MLP, starter defaults (100 epochs)",
+      "score": 0.16711376605793374,
+      "submitted": "2026-10-16T15:29:01+00:00",
+      "issue": null,
+      "submissions": 1
+    },
+    {
+      "team": "Baseline - Morgan MLP",
+      "model": "Morgan count fingerprint + MLP, starter defaults (100 epochs)",
+      "score": 0.08564148635802318,
+      "submitted": "2026-10-16T15:29:01+00:00",
+      "issue": null,
       "submissions": 1
     }
   ]
