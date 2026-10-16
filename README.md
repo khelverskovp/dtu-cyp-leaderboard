@@ -18,17 +18,17 @@ There are two leaderboards, each with one score. Each shows the best submission 
 3. [Open a submission](https://github.com/khelverskovp/dtu-cyp-leaderboard/issues/new?template=submission.yml): fill in your team name, the task and a short model description, and drag the CSV into the form.
 4. Within a few minutes a bot comments your score on the issue and updates the leaderboard.
 
-The file must contain `Molecule_Name` and one column per endpoint, with a prediction for each of the 921 test molecules from `prepare_data.py` (default seed 42). Classification predictions are probabilities between 0 and 1. If you build your own pipeline, write the same format.
+The file must contain `Molecule_Name` and one column per endpoint, with a prediction for each molecule in that task's test split from `prepare_data.py` (default seed 42). Classification predictions are probabilities between 0 and 1. If you build your own pipeline, write the same format.
 
 ## Rules
 
 - **Tune on validation, not test.** Choose models, hyperparameters and epochs using the validation split only. The test split is for the final evaluation. The leaderboard shows test scores, so do not use it for model selection.
 - **One submission per team per task per day** (Copenhagen time). Rejected submissions do not count.
-- **Use the starter repo's splits.** Do not train on the test molecules or their labels. The test labels are in your `data/test.csv`, and the challenge data is public, so the leaderboard relies on your honesty.
+- **Use the starter repo's splits.** Do not train on the test molecules or their labels. The test labels are in your `data/<task>/test.csv`, and the challenge data is public, so the leaderboard relies on your honesty.
 - **Use one team name** for all your team's submissions.
 
 Breaking these rules makes your results meaningless for your report, and the course staff may remove such entries.
 
 ## How it works
 
-Submissions are GitHub issues. A GitHub Actions workflow (`.github/workflows/submission.yml`) checks the file, scores it with the same metrics as `finetune.py` (`scoring/score.py`), records it in `submissions.json` and redeploys the page in `docs/`. The test labels are rebuilt at scoring time from the public challenge data; `scoring/test_molecules.csv` lists the test molecules.
+Submissions are GitHub issues. A GitHub Actions workflow (`.github/workflows/submission.yml`) checks the file, scores it with the same metrics as `finetune.py` (`scoring/score.py`), records it in `submissions.json` and redeploys the page in `docs/`. The test labels are rebuilt at scoring time from the public challenge data; `scoring/test_molecules_<task>.csv` lists the test molecules of each task.

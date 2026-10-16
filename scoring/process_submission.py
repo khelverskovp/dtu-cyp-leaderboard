@@ -68,7 +68,7 @@ def check_predictions(frame, labels, targets, task):
     if got != expected:
         raise Rejected(f'The molecules do not match the test split: {len(expected - got)} missing and '
                        f'{len(got - expected)} unexpected. Use the split made by `prepare_data.py` '
-                       f'with the default seed (42).')
+                       f'with the default seed (42), and the predictions for this task.')
     values = frame.set_index('Molecule_Name').loc[labels.Molecule_Name, targets]
     values = values.apply(pd.to_numeric, errors='coerce').to_numpy(dtype=float)
     if not np.isfinite(values).all():
@@ -132,7 +132,7 @@ def process(env):
                                f'(already used today by #{r["issue"]}). Try again tomorrow '
                                f'(days are counted in Copenhagen time).')
     targets = REG if task == 'regression' else CLS
-    labels = load_test_labels()
+    labels = load_test_labels(task)
     predictions = check_predictions(download(fields.get('Predictions file', '')), labels, targets, task)
     scores = summarize(metrics(labels, predictions, targets, task), targets, task)
     records.append({'issue': int(env['ISSUE_NUMBER']), 'user': user, 'team': team, 'task': task,

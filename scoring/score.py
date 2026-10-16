@@ -11,28 +11,21 @@ from sklearn.metrics import matthews_corrcoef, mean_absolute_error, r2_score, ro
 DATA_REVISION = '146282d2ce1532f1803679a834a9bec9dac1e482'
 REG = [f'{c}_pIC50_direct_inhibition' for c in ['CYP1A2', 'CYP2C9', 'CYP2D6', 'CYP3A4']]
 CLS = ['CYP2D6_is_TDI', 'CYP3A4_is_TDI']
-FILES = ['cyp-challenge-TRAIN_inhibition.csv', 'cyp-challenge-TRAIN_TDI.csv']
-TEST_MOLECULES = Path(__file__).with_name('test_molecules.csv')
+TASK_FILES = {'regression': 'cyp-challenge-TRAIN_inhibition.csv', 'classification': 'cyp-challenge-TRAIN_TDI.csv'}
 
 
-def load_test_labels():
-    """Labels of the starter repo's test split, from the public challenge training data."""
-    tables = []
-    for name in FILES:
-        url = f'https://huggingface.co/datasets/openadmet/cyp-challenge-train-test/resolve/{DATA_REVISION}/{name}'
-        with urllib.request.urlopen(url, timeout=120) as response:
-            tables.append(pd.read_csv(io.BytesIO(response.read())))
-    reg, cls = tables
-    frame = reg.merge(cls[['Molecule_Name', 'SMILES'] + CLS], on=['Molecule_Name', 'SMILES'],
-                      how='outer', validate='one_to_one')
-    mapping = {'true': 1., 'false': 0., '1': 1., '0': 0., '1.0': 1., '0.0': 0.}
-    for col in CLS:
-        frame[col] = frame[col].astype(str).str.lower().map(mapping)
-    names = pd.read_csv(TEST_MOLECULES).Molecule_Name
-    test = frame.set_index('Molecule_Name').loc[names].reset_index()
-    if len(test) != len(names):
-        raise RuntimeError('Test molecules missing from the challenge data')
-    return test
+def load_test_labels(task):
+    """Labels of the starter repo's test split for one task, from that task's public training file."""
+    url = (f'https://huggingface.co/datasets/openadmet/cyp-challenge-train-test/resolve/'
+           f'{DATA_REVISION}/{TASK_FILES[task]}')
+    with urllib.request.urlopen(url, timeout=120) as response:
+        frame = pd.read_csv(io.BytesIO(response.read()))
+    if task == 'classification':
+        mapping = {'true': 1., 'false': 0., '1': 1., '0': 0., '1.0': 1., '0.0': 0.}
+        for col in CLS:
+            frame[col] = frame[col].astype(str).str.lower().map(mapping)
+    names = pd.read_csv(Path(__file__).with_name(f'test_molecules_{task}.csv')).Molecule_Name
+    return frame.set_index('Molecule_Name').loc[names].reset_index()
 
 
 def metrics(frame, predictions, targets, task):
