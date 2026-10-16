@@ -22,5 +22,25 @@
         "CYP3A4_pIC50_direct_inhibition": 0.726786357
       }
     }
+  },
+  {
+    "issue": 3,
+    "user": "khelverskovp",
+    "team": "test1",
+    "task": "classification",
+    "model": "5 epoch test",
+    "time": "2026-10-16T13:34:55+00:00",
+    "day": "2026-10-16",
+    "scores": {
+      "macro_MCC": 0.12393907500481141,
+      "per_target": {
+        "CYP2D6_is_TDI": 0.08826899397373984,
+        "CYP3A4_is_TDI": 0.15960915603588297
+      },
+      "secondary": {
+        "CYP2D6_is_TDI": 0.5669324827219564,
+        "CYP3A4_is_TDI": 0.7206134252262056
+      }
+    }
   }
 ]

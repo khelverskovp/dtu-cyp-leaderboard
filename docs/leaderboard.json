@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-16T13:34:22+00:00",
+  "updated": "2026-10-16T13:34:55+00:00",
   "regression": [
     {
       "team": "Test1",
@@ -10,5 +10,14 @@
       "submissions": 1
     }
   ],
-  "classification": []
+  "classification": [
+    {
+      "team": "test1",
+      "model": "5 epoch test",
+      "score": 0.12393907500481141,
+      "submitted": "2026-10-16T13:34:55+00:00",
+      "issue": 3,
+      "submissions": 1
+    }
+  ]
 }
