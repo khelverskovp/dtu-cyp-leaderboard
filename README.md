@@ -4,12 +4,12 @@ Leaderboard for the DTU Deep Learning project **Predicting CYP Inhibition with M
 
 **Live leaderboard: https://khelverskovp.github.io/dtu-cyp-leaderboard/** · [Starter code](https://github.com/khelverskovp/dtu-cyp-project)
 
-There are two leaderboards. Each shows the best submission per team.
+There are two leaderboards, each with one score. Each shows the best submission per team.
 
 | Task | Endpoints | Ranked by |
 |---|---|---|
-| Regression | pIC50 for CYP1A2, CYP2C9, CYP2D6, CYP3A4 | Macro ST-RAE (lower is better) |
-| Classification | TDI for CYP2D6, CYP3A4 | Macro MCC at threshold 0.5 (higher is better) |
+| Regression | pIC50 for CYP1A2, CYP2C9, CYP2D6, CYP3A4 | MA-ST-RAE: soft-threshold relative absolute error, averaged over the 4 enzymes (lower is better) |
+| Classification | TDI for CYP2D6, CYP3A4 | MCC at threshold 0.5, averaged over the 2 enzymes (higher is better) |
 
 ## How to submit
 

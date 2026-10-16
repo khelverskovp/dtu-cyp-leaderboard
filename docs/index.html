@@ -63,31 +63,20 @@
 
   <section>
     <h2>Regression</h2>
-    <p class="metric">pIC50 for four CYP enzymes. Ranked by macro ST-RAE (lower is better).</p>
+    <p class="metric">pIC50 for CYP1A2, CYP2C9, CYP2D6 and CYP3A4. Ranked by MA-ST-RAE, the soft-threshold relative absolute error averaged over the four enzymes (lower is better).</p>
     <div class="table-wrap"><table id="regression"></table></div>
   </section>
 
   <section>
     <h2>Classification</h2>
-    <p class="metric">Time-dependent inhibition of CYP2D6 and CYP3A4. Ranked by macro MCC (higher is better).</p>
+    <p class="metric">Time-dependent inhibition (TDI) of CYP2D6 and CYP3A4. Ranked by MCC, averaged over the two enzymes (higher is better).</p>
     <div class="table-wrap"><table id="classification"></table></div>
   </section>
 
   <footer id="updated"></footer>
 </main>
 <script>
-  const COLUMNS = {
-    regression: {
-      main: 'Macro ST-RAE', metric: 'ST-RAE', secondary: 'MAE',
-      targets: ['CYP1A2_pIC50_direct_inhibition', 'CYP2C9_pIC50_direct_inhibition',
-                'CYP2D6_pIC50_direct_inhibition', 'CYP3A4_pIC50_direct_inhibition'],
-    },
-    classification: {
-      main: 'Macro MCC', metric: 'MCC', secondary: 'AUROC',
-      targets: ['CYP2D6_is_TDI', 'CYP3A4_is_TDI'],
-    },
-  };
-  const short = t => t.split('_')[0].replace('CYP', '');
+  const SCORE = { regression: 'MA-ST-RAE', classification: 'MCC' };
   const fmt = v => (v === null || v === undefined) ? '–' : v.toFixed(3);
 
   function cell(row, text, cls) {
@@ -100,12 +89,9 @@
 
   function render(task, entries) {
     const table = document.getElementById(task);
-    const c = COLUMNS[task];
     table.replaceChildren();
     const head = table.createTHead().insertRow();
-    const headers = ['#', 'Team', 'Model', c.main,
-      ...c.targets.map(t => `${c.metric} ${short(t)}`),
-      ...c.targets.map(t => `${c.secondary} ${short(t)}`), 'Subs', 'Date'];
+    const headers = ['#', 'Team', 'Model', SCORE[task], 'Submissions', 'Date'];
     headers.forEach((h, i) => {
       const th = document.createElement('th');
       th.textContent = h;
@@ -127,8 +113,6 @@
       cell(row, e.team, 'left team');
       cell(row, e.model, 'left model');
       cell(row, fmt(e.score), 'main');
-      c.targets.forEach(t => cell(row, fmt(e.per_target[t])));
-      c.targets.forEach(t => cell(row, fmt(e.secondary[t])));
       cell(row, e.submissions);
       cell(row, e.submitted.slice(0, 10));
     });

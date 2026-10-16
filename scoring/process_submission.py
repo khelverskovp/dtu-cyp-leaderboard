@@ -26,6 +26,7 @@ MAX_BYTES = 5_000_000
 ATTACHMENT = re.compile(r'https://github\.com/user-attachments/files/\d+/[\w.\-]+')
 TEAM = re.compile(r'^[A-Za-z0-9][A-Za-z0-9 _.\-]{0,39}$')
 PRIMARY = {'regression': 'ST-RAE', 'classification': 'MCC'}
+SCORE_NAME = {'regression': 'MA-ST-RAE', 'classification': 'MCC'}
 
 
 class Rejected(Exception):
@@ -89,7 +90,6 @@ def best_per_team(records, task):
         current = best.get(key)
         if (current is None or (score < current['score'] if lower_is_better else score > current['score'])):
             best[key] = {'team': r['team'], 'model': r['model'], 'score': score,
-                         'per_target': r['scores']['per_target'], 'secondary': r['scores']['secondary'],
                          'submitted': r['time'], 'issue': r['issue']}
     counts = {}
     for r in records:
@@ -143,12 +143,9 @@ def process(env):
              'classification': best_per_team(records, 'classification')}
     LEADERBOARD.write_text(json.dumps(board, indent=2) + '\n')
     rank = next(i for i, e in enumerate(board[task], 1) if e['team'].lower() == team.lower())
-    primary = PRIMARY[task]
-    lines = [f'**Accepted.** Team **{team}**, {task}: macro {primary} = **{scores["macro_" + primary]:.4f}**', '',
-             f'| Endpoint | {primary} |', '|---|---|']
-    lines += [f'| {t} | {v:.4f} |' for t, v in scores['per_target'].items()]
-    lines += ['', f'Your team is ranked **{rank}** on the {task} leaderboard (best submission per team).']
-    return '\n'.join(lines)
+    score = scores['macro_' + PRIMARY[task]]
+    return (f'**Accepted.** Team **{team}**, {task}: {SCORE_NAME[task]} = **{score:.4f}**\n\n'
+            f'Your team is ranked **{rank}** on the {task} leaderboard (best submission per team).')
 
 
 def main():
