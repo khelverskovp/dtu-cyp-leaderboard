@@ -174,5 +174,49 @@
         "CYP3A4_is_TDI": 0.7185075469036535
       }
     }
+  },
+  {
+    "issue": null,
+    "user": "khelverskovp",
+    "team": "Baseline - Morgan RDKit LightGBM",
+    "task": "regression",
+    "model": "Morgan + RDKit features + LightGBM, starter defaults (early stopping on validation)",
+    "time": "2026-10-17T07:22:37+00:00",
+    "day": "2026-10-17",
+    "scores": {
+      "macro_ST-RAE": 0.7825625080091474,
+      "per_target": {
+        "CYP1A2_pIC50_direct_inhibition": 0.8068052883974164,
+        "CYP2C9_pIC50_direct_inhibition": 0.843665982233729,
+        "CYP2D6_pIC50_direct_inhibition": 0.9926704263448376,
+        "CYP3A4_pIC50_direct_inhibition": 0.48710833506060663
+      },
+      "secondary": {
+        "CYP1A2_pIC50_direct_inhibition": 0.6085435107559778,
+        "CYP2C9_pIC50_direct_inhibition": 0.5180323645253909,
+        "CYP2D6_pIC50_direct_inhibition": 0.6359557652676991,
+        "CYP3A4_pIC50_direct_inhibition": 0.5568555240948058
+      }
+    }
+  },
+  {
+    "issue": null,
+    "user": "khelverskovp",
+    "team": "Baseline - Morgan RDKit LightGBM",
+    "task": "classification",
+    "model": "Morgan + RDKit features + LightGBM, starter defaults (early stopping on validation)",
+    "time": "2026-10-17T07:22:37+00:00",
+    "day": "2026-10-17",
+    "scores": {
+      "macro_MCC": 0.14113000738770876,
+      "per_target": {
+        "CYP2D6_is_TDI": 0.0,
+        "CYP3A4_is_TDI": 0.2822600147754175
+      },
+      "secondary": {
+        "CYP2D6_is_TDI": 0.47208931419457734,
+        "CYP3A4_is_TDI": 0.7848578280232956
+      }
+    }
   }
 ]

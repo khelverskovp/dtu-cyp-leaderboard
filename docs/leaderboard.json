@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-16T15:29:01+00:00",
+  "updated": "2026-10-17T07:22:37+00:00",
   "regression": [
     {
       "team": "Baseline - Morgan RDKit MLP",
@@ -14,6 +14,14 @@
       "model": "Atom-JEPA fine-tuned + MLP readout, starter defaults (20 epochs)",
       "score": 0.7702638100588355,
       "submitted": "2026-10-16T15:29:01+00:00",
+      "issue": null,
+      "submissions": 1
+    },
+    {
+      "team": "Baseline - Morgan RDKit LightGBM",
+      "model": "Morgan + RDKit features + LightGBM, starter defaults (early stopping on validation)",
+      "score": 0.7825625080091474,
+      "submitted": "2026-10-17T07:22:37+00:00",
       "issue": null,
       "submissions": 1
     },
@@ -56,6 +64,14 @@
       "model": "Morgan + RDKit features + MLP, starter defaults (100 epochs)",
       "score": 0.16711376605793374,
       "submitted": "2026-10-16T15:29:01+00:00",
+      "issue": null,
+      "submissions": 1
+    },
+    {
+      "team": "Baseline - Morgan RDKit LightGBM",
+      "model": "Morgan + RDKit features + LightGBM, starter defaults (early stopping on validation)",
+      "score": 0.14113000738770876,
+      "submitted": "2026-10-17T07:22:37+00:00",
       "issue": null,
       "submissions": 1
     },
