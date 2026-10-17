@@ -1,4 +1,4 @@
-# CYP Inhibition Leaderboard
+# CYP Inhibition Leaderboard 🧬
 
 Leaderboard for the DTU Deep Learning project **Predicting CYP Inhibition with Molecular Foundation Models**.
 

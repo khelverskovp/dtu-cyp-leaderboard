@@ -40,8 +40,9 @@
   td.model { white-space: normal; min-width: 200px; color: var(--muted); font-size: 14px; }
   tr:last-child td { border-bottom: none; }
   td.main { font-weight: 700; background: var(--accent-soft); }
-  td.rank { font-weight: 700; width: 40px; }
+  td.rank { font-weight: 700; width: 64px; }
   tr.first td.rank { color: var(--gold); }
+  .trophy { width: 18px; height: 18px; vertical-align: -3px; margin-right: 6px; }
   .team { font-weight: 600; }
   .empty { padding: 24px; text-align: center; color: var(--muted); }
   .note {
@@ -57,7 +58,7 @@
 <body>
 <main>
   <header>
-    <h1>CYP Inhibition Leaderboard</h1>
+    <h1>CYP Inhibition Leaderboard 🧬</h1>
     <p>DTU Deep Learning project: predicting CYP inhibition with molecular foundation models.
       Scores are on the held-out test split made by the starter repository. Each team's best submission is shown.</p>
     <p class="note">Your score on the leaderboard does not affect your grade. It's meant as a fun way to track your own progress as you complete the project and compare to other groups, so please follow the rules and have fun with it :)</p>
@@ -97,6 +98,11 @@
   const SCORE = { regression: 'MA-ST-RAE', classification: 'MCC' };
   const fmt = v => (v === null || v === undefined) ? '–' : v.toFixed(3);
 
+  const TROPHY_COLORS = ['#d4a017', '#a8a9ad', '#b0703c'];
+  function trophy(color) {
+    return `<svg class="trophy" viewBox="0 0 24 24" aria-hidden="true"><path fill="${color}" d="M6 2h12v2h3v3a5 5 0 0 1-4.6 5A6 6 0 0 1 13 15.9V18h3v2H8v-2h3v-2.1A6 6 0 0 1 7.6 12 5 5 0 0 1 3 7V4h3V2zm0 4H5v1a3 3 0 0 0 1.4 2.5A6 6 0 0 1 6 8V6zm12 0v2a6 6 0 0 1-.4 1.5A3 3 0 0 0 19 7V6h-1zM7 21h10v1H7z"/></svg>`;
+  }
+
   function cell(row, text, cls) {
     const td = document.createElement('td');
     td.textContent = text;
@@ -127,7 +133,8 @@
     entries.forEach((e, i) => {
       const row = body.insertRow();
       if (i === 0) row.className = 'first';
-      cell(row, i + 1, 'rank');
+      const rank = cell(row, i + 1, 'rank');
+      if (i < 3) rank.insertAdjacentHTML('afterbegin', trophy(TROPHY_COLORS[i]));
       cell(row, e.team, 'left team');
       cell(row, e.model, 'left model');
       cell(row, fmt(e.score), 'main');
