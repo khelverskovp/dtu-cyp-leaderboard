@@ -1,6 +1,14 @@
 {
-  "updated": "2026-10-17T07:22:37+00:00",
+  "updated": "2026-11-03T09:33:54+00:00",
   "regression": [
+    {
+      "team": "group 83",
+      "model": "Atom-JEPA + MLP readout, 20 epochs",
+      "score": 0.7482195718918058,
+      "submitted": "2026-11-03T09:33:54+00:00",
+      "issue": 4,
+      "submissions": 1
+    },
     {
       "team": "Baseline - Morgan RDKit MLP",
       "model": "Morgan + RDKit features + MLP, starter defaults (100 epochs)",
