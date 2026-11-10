@@ -242,5 +242,29 @@
         "CYP3A4_pIC50_direct_inhibition": 0.5600541667540108
       }
     }
+  },
+  {
+    "issue": 5,
+    "user": "s225733",
+    "team": "Group 21",
+    "task": "regression",
+    "model": "Morgan Rdkit MLP readout - 100 epochs",
+    "time": "2026-11-10T15:56:49+00:00",
+    "day": "2026-11-10",
+    "scores": {
+      "macro_ST-RAE": 0.733073253590136,
+      "per_target": {
+        "CYP1A2_pIC50_direct_inhibition": 0.7715811535273301,
+        "CYP2C9_pIC50_direct_inhibition": 0.7171436654332936,
+        "CYP2D6_pIC50_direct_inhibition": 0.9481189832912839,
+        "CYP3A4_pIC50_direct_inhibition": 0.49544921210863624
+      },
+      "secondary": {
+        "CYP1A2_pIC50_direct_inhibition": 0.604792869,
+        "CYP2C9_pIC50_direct_inhibition": 0.4697717242311557,
+        "CYP2D6_pIC50_direct_inhibition": 0.6194150542612612,
+        "CYP3A4_pIC50_direct_inhibition": 0.5982741255240641
+      }
+    }
   }
 ]
