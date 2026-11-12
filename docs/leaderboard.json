@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-10T15:56:49+00:00",
+  "updated": "2026-11-12T12:10:43+00:00",
   "regression": [
     {
       "team": "Group 21",
@@ -97,6 +97,14 @@
       "score": 0.08564148635802318,
       "submitted": "2026-10-16T15:29:01+00:00",
       "issue": null,
+      "submissions": 1
+    },
+    {
+      "team": "group_90",
+      "model": "Chemberta+unimol2, 20 epochs",
+      "score": 0.0,
+      "submitted": "2026-11-12T12:10:43+00:00",
+      "issue": 6,
       "submissions": 1
     }
   ]

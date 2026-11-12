@@ -266,5 +266,25 @@
         "CYP3A4_pIC50_direct_inhibition": 0.5982741255240641
       }
     }
+  },
+  {
+    "issue": 6,
+    "user": "albertoiurlo-cmd",
+    "team": "group_90",
+    "task": "classification",
+    "model": "Chemberta+unimol2, 20 epochs",
+    "time": "2026-11-12T12:10:43+00:00",
+    "day": "2026-11-12",
+    "scores": {
+      "macro_MCC": 0.0,
+      "per_target": {
+        "CYP2D6_is_TDI": 0.0,
+        "CYP3A4_is_TDI": 0.0
+      },
+      "secondary": {
+        "CYP2D6_is_TDI": 0.5376927166400851,
+        "CYP3A4_is_TDI": 0.6452653003647502
+      }
+    }
   }
 ]
