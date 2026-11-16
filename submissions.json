@@ -330,5 +330,29 @@
         "CYP3A4_is_TDI": 0.7161396932873868
       }
     }
+  },
+  {
+    "issue": 9,
+    "user": "krusand",
+    "team": "Group 6",
+    "task": "regression",
+    "model": "Atom-JEPA + MLP readout, 2 conformers, 8 epochs",
+    "time": "2026-11-16T12:01:48+00:00",
+    "day": "2026-11-16",
+    "scores": {
+      "macro_ST-RAE": 0.718917532280322,
+      "per_target": {
+        "CYP1A2_pIC50_direct_inhibition": 0.8054471048815367,
+        "CYP2C9_pIC50_direct_inhibition": 0.7291799136538226,
+        "CYP2D6_pIC50_direct_inhibition": 0.8920474557203733,
+        "CYP3A4_pIC50_direct_inhibition": 0.44899565486555515
+      },
+      "secondary": {
+        "CYP1A2_pIC50_direct_inhibition": 0.6126033861615721,
+        "CYP2C9_pIC50_direct_inhibition": 0.46219780756783924,
+        "CYP2D6_pIC50_direct_inhibition": 0.5911643556216215,
+        "CYP3A4_pIC50_direct_inhibition": 0.5361205052299466
+      }
+    }
   }
 ]

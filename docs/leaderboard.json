@@ -1,6 +1,14 @@
 {
-  "updated": "2026-11-16T00:02:15+00:00",
+  "updated": "2026-11-16T12:01:48+00:00",
   "regression": [
+    {
+      "team": "Group 6",
+      "model": "Atom-JEPA + MLP readout, 2 conformers, 8 epochs",
+      "score": 0.718917532280322,
+      "submitted": "2026-11-16T12:01:48+00:00",
+      "issue": 9,
+      "submissions": 1
+    },
     {
       "team": "Group 21",
       "model": "Morgan Rdkit MLP readout - 100 epochs",
