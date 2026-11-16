@@ -310,5 +310,25 @@
         "CYP3A4_pIC50_direct_inhibition": 0.6236896475240641
       }
     }
+  },
+  {
+    "issue": 8,
+    "user": "Valdemar1703",
+    "team": "Group 26",
+    "task": "classification",
+    "model": "Morgan RDKit MLP - 50 Epochs",
+    "time": "2026-11-16T00:02:15+00:00",
+    "day": "2026-11-16",
+    "scores": {
+      "macro_MCC": 0.19986150601941904,
+      "per_target": {
+        "CYP2D6_is_TDI": 0.1598725620159753,
+        "CYP3A4_is_TDI": 0.2398504500228628
+      },
+      "secondary": {
+        "CYP2D6_is_TDI": 0.5749069643806486,
+        "CYP3A4_is_TDI": 0.7161396932873868
+      }
+    }
   }
 ]
