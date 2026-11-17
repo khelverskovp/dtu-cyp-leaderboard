@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-16T16:46:25+00:00",
+  "updated": "2026-11-17T10:23:02+00:00",
   "regression": [
     {
       "team": "Group 6",
@@ -10,19 +10,19 @@
       "submissions": 1
     },
     {
+      "team": "Group 26",
+      "model": "Morgan RDKit MLP",
+      "score": 0.7287001778816372,
+      "submitted": "2026-11-17T10:23:02+00:00",
+      "issue": 13,
+      "submissions": 2
+    },
+    {
       "team": "Group 21",
       "model": "Morgan Rdkit MLP readout - 100 epochs",
       "score": 0.733073253590136,
       "submitted": "2026-11-10T15:56:49+00:00",
       "issue": 5,
-      "submissions": 1
-    },
-    {
-      "team": "Group 26",
-      "model": "Morgan RDKit MLP - 15 epochs",
-      "score": 0.736612348870333,
-      "submitted": "2026-11-15T23:57:33+00:00",
-      "issue": 7,
       "submissions": 1
     },
     {
