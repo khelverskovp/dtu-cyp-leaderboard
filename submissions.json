@@ -446,5 +446,25 @@
         "CYP3A4_pIC50_direct_inhibition": 0.532159086182854
       }
     }
+  },
+  {
+    "issue": 15,
+    "user": "romansekandari1999",
+    "team": "Group 66",
+    "task": "classification",
+    "model": "Morgan + RDkit features + LightGBM, tuned on validation (lr=0.30, num_leaves=2)",
+    "time": "2026-11-20T13:05:03+00:00",
+    "day": "2026-11-20",
+    "scores": {
+      "macro_MCC": 0.11792337966502764,
+      "per_target": {
+        "CYP2D6_is_TDI": -0.06879138061794182,
+        "CYP3A4_is_TDI": 0.3046381399479971
+      },
+      "secondary": {
+        "CYP2D6_is_TDI": 0.4707070707070707,
+        "CYP3A4_is_TDI": 0.7538641355822906
+      }
+    }
   }
 ]
