@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-17T10:23:02+00:00",
+  "updated": "2026-11-20T13:02:21+00:00",
   "regression": [
     {
       "team": "Group 6",
@@ -31,6 +31,14 @@
       "score": 0.7482195718918058,
       "submitted": "2026-11-03T09:33:54+00:00",
       "issue": 4,
+      "submissions": 1
+    },
+    {
+      "team": "Group 66",
+      "model": "Morgan + RDKit features + LightGBM, tuned on validation (lr=0.01, num_leaves=10)",
+      "score": 0.7521299661807997,
+      "submitted": "2026-11-20T13:02:21+00:00",
+      "issue": 14,
       "submissions": 1
     },
     {
