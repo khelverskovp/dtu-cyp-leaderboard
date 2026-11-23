@@ -466,5 +466,25 @@
         "CYP3A4_is_TDI": 0.7538641355822906
       }
     }
+  },
+  {
+    "issue": 17,
+    "user": "TSimona08",
+    "team": "group 83",
+    "task": "classification",
+    "model": "Atom-JEPA, default",
+    "time": "2026-11-23T14:12:59+00:00",
+    "day": "2026-11-23",
+    "scores": {
+      "macro_MCC": 0.20553592066535,
+      "per_target": {
+        "CYP2D6_is_TDI": 0.04134234698891868,
+        "CYP3A4_is_TDI": 0.3697294943417813
+      },
+      "secondary": {
+        "CYP2D6_is_TDI": 0.5650186071238703,
+        "CYP3A4_is_TDI": 0.757703081232493
+      }
+    }
   }
 ]
