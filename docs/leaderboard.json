@@ -1,6 +1,14 @@
 {
-  "updated": "2026-11-23T14:12:59+00:00",
+  "updated": "2026-11-23T23:18:09+00:00",
   "regression": [
+    {
+      "team": "group 83",
+      "model": "ChemBERT + morgan + rdkit, MLP 2x25",
+      "score": 0.7089322315892301,
+      "submitted": "2026-11-23T23:18:09+00:00",
+      "issue": 18,
+      "submissions": 2
+    },
     {
       "team": "Group 6",
       "model": "Atom-JEPA + MLP readout, 2 conformers, 8 epochs",
@@ -23,14 +31,6 @@
       "score": 0.733073253590136,
       "submitted": "2026-11-10T15:56:49+00:00",
       "issue": 5,
-      "submissions": 1
-    },
-    {
-      "team": "group 83",
-      "model": "Atom-JEPA + MLP readout, 20 epochs",
-      "score": 0.7482195718918058,
-      "submitted": "2026-11-03T09:33:54+00:00",
-      "issue": 4,
       "submissions": 1
     },
     {
