@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-23T23:18:09+00:00",
+  "updated": "2026-11-23T23:20:31+00:00",
   "regression": [
     {
       "team": "group 83",
@@ -92,6 +92,14 @@
   ],
   "classification": [
     {
+      "team": "group 83",
+      "model": "ChemBERT + morgan + rdkit, MLP 2x25",
+      "score": 0.23533091602796855,
+      "submitted": "2026-11-23T23:20:31+00:00",
+      "issue": 19,
+      "submissions": 2
+    },
+    {
       "team": "Baseline - Atom-JEPA",
       "model": "Atom-JEPA fine-tuned + MLP readout, starter defaults (20 epochs)",
       "score": 0.2332267395690333,
@@ -105,14 +113,6 @@
       "score": 0.20588821227366,
       "submitted": "2026-11-16T16:46:25+00:00",
       "issue": 12,
-      "submissions": 1
-    },
-    {
-      "team": "group 83",
-      "model": "Atom-JEPA, default",
-      "score": 0.20553592066535,
-      "submitted": "2026-11-23T14:12:59+00:00",
-      "issue": 17,
       "submissions": 1
     },
     {
