@@ -530,5 +530,25 @@
         "CYP3A4_is_TDI": 0.7816939725530501
       }
     }
+  },
+  {
+    "issue": 20,
+    "user": "utkarshrs",
+    "team": "Group 115",
+    "task": "classification",
+    "model": "Morgan-RDKIT + MLP, 100 epochs, 4 layers",
+    "time": "2026-11-24T22:03:04+00:00",
+    "day": "2026-11-24",
+    "scores": {
+      "macro_MCC": 0.17979162711530283,
+      "per_target": {
+        "CYP2D6_is_TDI": 0.07453419959139809,
+        "CYP3A4_is_TDI": 0.28504905463920754
+      },
+      "secondary": {
+        "CYP2D6_is_TDI": 0.5317384370015948,
+        "CYP3A4_is_TDI": 0.7423775265501884
+      }
+    }
   }
 ]
